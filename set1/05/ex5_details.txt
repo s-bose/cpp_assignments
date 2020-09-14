@@ -1,0 +1,28 @@
+Explain in your own words the meaning of redirection and piping
+
+    > Input/Output Redirection is used in Unix for diverting the input of a command
+    from another file, or diverting the output of a command to some other file.
+
+    For example,
+    echo hello world > text
+
+    will redirect the output produced by echo (which is "hello world") and write it to the file named text
+
+    Piping is used as another form of redirection where the output of one program (on the left hand side, prog1) is
+    used as an input to another program (on the right hand side, prog2).
+
+    prog1 | prog2
+
+
+In particular, explain what happens in
+
+    program < in > out
+        
+
+    > here, program gets its input from the file named in, then the output of the program gets saved in out.
+
+    program | less
+
+    > The output of the program is linked to the input to the unix command less.
+    
+        

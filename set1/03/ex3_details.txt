@@ -1,0 +1,65 @@
+1. Is this a valid C++ program?
+int main() {}
+    > It is a valid C++ program in the sense that it will get compiled without any warning, 
+    because main() function implicitly returns 0 if not specified with a return statement. 
+    However, the program does not do anything so it is pretty much useless, and serves no purpose.
+
+
+2. Is this a valid C++ program?
+int main(int argc, char *argv[], char *envp[]) {}
+    > It is a valid C++ statement, however, “envp” parameter is not defined by the C++ standards 
+    and hence should be avoided. A better way to use environment variables is to use “extern char **env” 
+    as global variable.
+
+3. Is this a valid C++ program?
+int main(int argc, char *argv[])
+{
+    return;
+}
+    > No, this is going to cause compilation error. Since we are explicitly using the return statement, 
+    we have to provide some return value of int type.
+
+
+4. Is this a valid C++ expression, and is it true?
+sizeof('c') == 1
+    > In C++, char types have a size of 1 Byte, and unlike C, C++ does not treat chars as int. 
+    Therefore, the equality should result in true, however, there is a missing semi-colon at the end 
+    which will make a compile-time error.
+
+5. In main(int argc, char *argv[]) it is true that argv[argc] == 0
+    > “argc” holds the count of the number of command-line arguments, including the name of the executable program, 
+    and argv is the array of strings containing these command-line arguments with the name of the 
+    program being the first, at index 0. Therefore, if there are “argc” number of arguments, then they will be from 
+    argv[0] to argv[argc – 1], since “argc” index does not exist, C++ outputs 0 when argv[argc] is accessed. 
+    Hence, argv[argc] == 0 is true.
+
+6. To immediately end a program from deep inside its code exit(0) should be used.
+    > Yes, exit(0) can be used to immediately exit out of a program execution, the integer argument 0 
+    signifying a successful exit.
+
+7. When defining an enum called Name start with enum Name, instead of using typedef enum Name.
+    > enums, structs etc do not need typedefs in C++. The tag name for the enum itself can be used as the typename.
+    Example:
+    int main()
+    {
+        enum Name
+        {
+            david,
+            goliath
+        };
+        Name name = goliath;
+        std::cout << name << std::endl;
+        return 0;
+    }
+    // output: 1
+
+
+
+8. When writing argv[2][3] the index [2] is evaluated before index [3]
+    > Yes, in argv[2][3], the first index [2] is evaluated first and the second command-line argument 
+    at the 2nd index is obtained. The next index [3] is used to obtain the 3rd char in the char sequence of 
+    the 2nd command-line argument string.
+
+
+
+

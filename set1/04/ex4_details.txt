@@ -1,0 +1,7 @@
+Constraints:
+When using the R"(...)" form, the raw character sequences inside it cannot be of the form as "( or )" , 
+i.e, the opening and closing sequence. Therefore, we cannot have R"( "(hello)" )".
+For that, we need to use an additiomal delimiter wrapper around it, so that it is 
+R"something( "(hello)" )something".
+However, now, we cannot have a character sequence resembling these new opening and closing sequences, 
+i.e, "something( or )something"

@@ -1,0 +1,34 @@
+Commands and Output:
+
+
+Compilation-
+> g++ -c ex1.cc -Wall -Werror
+> ls -l
+total 4
+-rwxrwxrwx 1 shiladitya shiladitya  325 Sep  9 17:11 exercise_1.cc
+-rwxrwxrwx 1 shiladitya shiladitya 2728 Sep  9 17:48 exercise_1.o
+
+Linking, generating and stripping the executable-
+>g++ -o ex1 ex1.o && strip -s ex1
+
+Run the executable-
+
+> ./ex1
+Hello World
+
+Locating iostream-
+> locate iostream | grep '\biostream$'
+/mnt/c/Program Files (x86)/Microsoft Visual Studio/2019/BuildTools/VC/Tools/MSVC/14.26.28801/include/iostream
+/mnt/c/Ruby26-x64/msys64/mingw64/include/c++/9.3.0/iostream
+/mnt/c/Users/shila/.cargo/registry/src/github.com-1ecc6299db9ec823/libz-sys-1.0.25/src/zlib/contrib/iostream
+/usr/include/c++/9/iostream
+>ls -al /usr/include/c++/9/iostream
+-rw-r--r-- 1 root root 2695 Apr  9 16:08 /usr/include/c++/9/iostream
+
+
+Size:
+Source file (exercise_1.cc): 325 Bytes
+Object file (exercise_1.o): 2728 Bytes
+Executable program, stripped (exercise_1): 14464 Bytes
+Iostream file: 2695 Bytes
+
