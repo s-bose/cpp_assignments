@@ -1,0 +1,13 @@
+#ifndef MAIN_H_
+#define MAIN_H_
+
+#include <string>
+
+struct ReturnValues
+{
+    bool ok;
+    size_t nr;
+    std::string value;
+};
+
+#endif

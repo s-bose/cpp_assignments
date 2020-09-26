@@ -7,24 +7,27 @@ int main()
     while (std::cin >> first >> second)
     {
         long double productLarge;
+
         std::cout << "Numbers: " << first << ", " << second << '\n';
-                                // compute (a * b)
+
+                // compute (a * b)
         long long unsigned product = first * second;
-                                // if (a * b) / b != a then product has ovrflowed
+                // if (a * b) / b != a then product has overflowed
         if ((product / first) != second)
-                                // double the size and store the product
+                // double the size and store the product
             productLarge = static_cast<long double>(product);
         else
             productLarge = product;
-        std::cout << productLarge << '\n';
-                                // repeat until the remainder is zero
+            
+                // repeat until the remainder is zero
         while ((rest = first % second) != 0)
-        {                       // assign second to first, rest to second
+        {                       
+                // assign second to first, rest to second
             first = second;
             second = rest;
         }
 
-                                // second = gcd(a, b), lcm = (a * b) / second
+                // second = gcd(a, b), lcm = (a * b) / second
         std::cout << "GCD: " << second << " LCM: " << productLarge / second << '\n';
     }
 }

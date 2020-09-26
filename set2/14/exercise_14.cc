@@ -15,13 +15,11 @@ int main(int argc, char **argv)
         {       
                 // mask holds a 1 corresponding to the position of argPos
                 // for the 2nd argument (argPos 1), mask is 2 or 0010
-            int mask = 1 << argPos;
-                
+            int mask = 1 << argPos;      
                 // if mask does not match with combs then the corresponding
                 // argument should not be printed, hence skip
             if ((combs & mask) == 0)
                 continue;
-                
                 // otherwise print the corresponding argument
                 // incremented due to skipping the 1st argument
             std::cout << argv[argPos + 1] << ' ';

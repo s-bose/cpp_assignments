@@ -5,16 +5,16 @@ int main()
 {
     while (true)
     {
-        std::cout << "? ";              // display the prompt
+        std::cout << "? ";      // display the prompt
 
         std::string line;
-                                        // get the text line from input stream
-                                        // if empty line or EOF, end program
+                // get the text line from input stream
+                // if empty line or EOF, end program
         if (not std::getline(std::cin, line) or line.empty())
             break;
 
         for                            
-        (                               // iterate over the string in reverse
+        (       // iterate over the string in reverse
             std::string::reverse_iterator reverseIter = line.rbegin();
             reverseIter != line.rend(); 
             ++reverseIter
@@ -23,6 +23,7 @@ int main()
         {
             std::cout << *reverseIter;  // print the characters in reverse
         }
+        
         std::cout << '\n';
     }
 }

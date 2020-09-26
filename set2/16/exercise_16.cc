@@ -7,8 +7,10 @@ int main(int argc, char **argv)
     size_t radix = atoi(argv[1]);
     size_t number = atoi(argv[2]);
     std::cout << number << ", " << "displyed using radix " << radix << "is : ";
+
                             // string to store the base converted number
     std::string convertedNumber;
+
     if (number == 0)        // 0 is 0 in any base
         std::cout << number;
 
@@ -26,7 +28,6 @@ int main(int argc, char **argv)
         else    
             convertedNumber += std::to_string(digit);
     }
-
                             // reverse the string so that the last digit goes back
                             // to the last
     std::reverse(convertedNumber.begin(), convertedNumber.end());
