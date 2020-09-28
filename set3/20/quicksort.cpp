@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 
 size_t partition(int *arr, size_t left, size_t right)
 {
@@ -31,15 +32,25 @@ void quicksort(int *arr, size_t left, size_t right)
         return;
     size_t mid = partition(arr, left, right);
     quicksort(arr, left, mid);
-    quicksort(arr, mid+1, right);
+    quicksort(arr, mid + 1, right);
 }
 
 int main()
 {
-    int arr[] = {10, 7, 8, 9, 1, 5};
-    quicksort(arr, 0, 6);
+    int *arr = new int[20];
+    for (int i = 0; i < 20; i++)
+    {
+        arr[i] = rand() % 100 + 1;
+    }
+    for (int i = 0; i < 20; i++)
+    {
+        std::cout << arr[i] << ' ';
+    }
+    std::cout << '\n';
 
-    for (int i = 0; i < 6; i++)
+    quicksort(arr, 0, 20);
+
+    for (int i = 0; i < 20; i++)
     {
         std::cout << arr[i] << ' ';
     }
