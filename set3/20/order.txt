@@ -1,5 +1,10 @@
-utilities.h
-utilities.cpp
 quicksort.h
 quicksort.cpp
+env_size.h
+env_size.cpp
 exercise_20.cpp
+
+quicksort_string/quicksort.h
+quicksort_string/quicksort.cpp
+quicksort_string/exercise_20.cpp
+

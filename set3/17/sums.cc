@@ -6,10 +6,10 @@
 double sum(int argc, char **argv)
 {
     double total = 0;
-    for (int i = 1; i < argc; ++i)
+    for (int idx = 1; idx < argc; ++idx)
     {
-            // convert to int
-        total += std::stoi(argv[i]); 
+            // convert command-line arg to int
+        total += std::stoi(argv[idx]); 
     }
     return total;
 }
@@ -17,10 +17,10 @@ double sum(int argc, char **argv)
 double sum(char **argv, int argc)
 {
     double total = 0;
-    for (int i = 1; i < argc; ++i)
+    for (int idx = 1; idx < argc; ++idx)
     {
-            // convert to double
-        total += std::stod(argv[i]); 
+            // convert command-line arg to double
+        total += std::stod(argv[idx]); 
     }  
     return total;
 }

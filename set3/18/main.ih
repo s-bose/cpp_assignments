@@ -1,3 +1,5 @@
+#ifndef MAIN_IH_
+#define MAIN_IH_
 
 #include <iostream>
 #include <string>
@@ -9,3 +11,4 @@ struct ReturnValues
     std::string value;
 };
 
+#endif

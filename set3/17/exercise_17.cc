@@ -9,10 +9,10 @@ int main(int argc, char **argv)
         // flag to check if any command-line argument is double
     bool has_double = false;
     
-    for (int i = 1; i < argc; ++i)
+    for (int idx = 1; idx < argc; ++idx)
     {
         // check if any argument contains a dot
-        if ((std::string( argv[i] ).find('.')) != std::string::npos)
+        if ((std::string( argv[idx] ).find('.')) != std::string::npos)
         {
             has_double = true;
             break;

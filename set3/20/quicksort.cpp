@@ -13,6 +13,11 @@ int lcase_compare(std::string str_first, std::string str_second)
     return str_first.compare(str_second);
 }
 
+/*
+    a comparison function to compare between two std::strings, case-insensitively,
+    by transforming each string into lowercase and calling std::string::compare()
+*/
+
 
 size_t partition(std::string *arr, size_t left, size_t right)
 {
@@ -32,11 +37,20 @@ size_t partition(std::string *arr, size_t left, size_t right)
     return pivot;
 }
 
+
+//  standard Hoare's partition algorithm on the passed array of strings.
+
+
 void quicksort(std::string *arr, size_t left, size_t right)
 {
     if (left >= right)
         return;
     size_t mid = partition(arr, left, right);
-    quicksort(arr, left, mid);
-    quicksort(arr, mid + 1, right);
+    quicksort(arr, left, mid);      // left subarray <= pivot element
+    quicksort(arr, mid + 1, right); // right subarray > pivot element
 }
+
+/*
+    this quicksort takes an array of std::strings and sorts the entire array 
+    in alphabetical order.
+*/
