@@ -3,6 +3,6 @@
 
 #include <string>
 
-size_t env_length(char **environ);
+size_t env_size(char **environ);
 
 #endif

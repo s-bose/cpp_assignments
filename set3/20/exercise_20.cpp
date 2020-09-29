@@ -8,7 +8,7 @@ extern char **environ;
 
 int main()
 {
-    size_t length = env_length(environ);
+    size_t length = env_size(environ);
 
         // convert the environment variables to std::string and store in an array
     std::string env_array[length];

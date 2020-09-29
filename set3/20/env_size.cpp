@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <cctype>
 
-size_t env_length(char **environ)
+size_t env_size(char **environ)
 {
     size_t size = 0;
     while (*(environ++) != nullptr) 
@@ -11,4 +11,4 @@ size_t env_length(char **environ)
     return size;
 }
 
-// calculates the length of the environment variable array
+// calculates the size of the environment variable array

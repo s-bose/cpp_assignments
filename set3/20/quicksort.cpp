@@ -1,7 +1,6 @@
 #include <algorithm>
 
 #include "quicksort.h"
-#include "env_size.h"
 
 int lcase_compare(std::string str_first, std::string str_second)
 {
@@ -37,7 +36,6 @@ size_t partition(std::string *arr, size_t left, size_t right)
     return pivot;
 }
 
-
 //  standard Hoare's partition algorithm on the passed array of strings.
 
 
@@ -52,5 +50,5 @@ void quicksort(std::string *arr, size_t left, size_t right)
 
 /*
     this quicksort takes an array of std::strings and sorts the entire array 
-    in alphabetical order.
+    in alphabetical order by comparing the string elements case-insensitively.
 */

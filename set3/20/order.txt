@@ -4,7 +4,7 @@ env_size.h
 env_size.cpp
 exercise_20.cpp
 
-quicksort_string/quicksort.h
-quicksort_string/quicksort.cpp
-quicksort_string/exercise_20.cpp
+quicksort_string/quicksort_str.h
+quicksort_string/quicksort_str.cpp
+quicksort_string/exercise_20_str.cpp
 
