@@ -1,7 +1,7 @@
 #include <algorithm>
 
 #include "quicksort.h"
-#include "utilities.h"
+#include "env_size.h"
 
 int lcase_compare(std::string str_first, std::string str_second)
 {
