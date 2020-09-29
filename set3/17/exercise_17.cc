@@ -18,5 +18,6 @@ int main(int argc, char **argv)
             break;
         }
     }
+        // call the functions  (for double)        (for int)
     std::cout << (has_double ? sum(argv, argc) : sum(argc, argv)) << '\n';
 }
