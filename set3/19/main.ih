@@ -1,5 +1,3 @@
-#ifndef MAIN_IH_
-#define MAIN_IH_
 #include <iostream>
 
 void usage(char const* programName);
@@ -7,5 +5,3 @@ void usage(char const* programName);
 size_t countChars(std::istream& stream);
 size_t countWords(std::istream& stream);
 size_t countLines(std::istream& stream);
-
-#endif

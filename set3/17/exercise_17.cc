@@ -1,19 +1,22 @@
 #include <iostream>
 #include <string>
-#include "sums.ih"
+
+#include "sums.h"
 
 
 int main(int argc, char **argv) 
 {   
-    bool doubl_ = false;
+        // flag to check if any command-line argument is double
+    bool has_double = false;
+    
     for (int i = 1; i < argc; ++i)
     {
+        // check if any argument contains a dot
         if ((std::string( argv[i] ).find('.')) != std::string::npos)
         {
-            doubl_ = true;
+            has_double = true;
             break;
         }
     }
-    std::cout << (doubl_ ? sum(argv, argc) : sum(argc, argv)) << '\n';
-    return 0;
+    std::cout << (has_double ? sum(argv, argc) : sum(argc, argv)) << '\n';
 }

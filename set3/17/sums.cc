@@ -1,24 +1,25 @@
 #include <iostream>
 #include <string>
-#include "sums.ih"
+
+#include "sums.h"
 
 double sum(int argc, char **argv)
-
 {
     double total = 0;
     for (int i = 1; i < argc; ++i)
     {
+            // convert to int
         total += std::stoi(argv[i]); 
     }
     return total;
 }
 
 double sum(char **argv, int argc)
-
 {
     double total = 0;
     for (int i = 1; i < argc; ++i)
     {
+            // convert to double
         total += std::stod(argv[i]); 
     }  
     return total;

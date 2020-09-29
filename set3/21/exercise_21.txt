@@ -1,0 +1,291 @@
+1. define an int-type parameter
+
+> It is appropriate to use an int-type parameter when the function wants to make changes and 
+do numerical operations on a copy of the value of the parameter.
+
+In the following code this is illustrated because the sqr() function does not change the value 
+of a but copies the value of a and compute its square.
+
+    int sqr(int num);
+
+    int val = 2;
+    cout << sqr(val);     // val = 2;
+
+
+2. define a std::string value parameter
+
+> It is appropriate to use a std::string type value parameter when the function needs to modify 
+the object but does not want to make the changes visible to the caller. 
+
+In this example, reverse() modifies a copy of hello and reverses it, while the original string 
+stays intact.
+
+    std::string reverse(std::string str);
+
+    std::string hello = "hello world";
+    cout << reverse(hello);     // hello = "hello world"
+
+
+3. define a const reference to an int-type parameter
+
+> This is appropriate when the function wants to use the integer parameter value but not change it. 
+
+In this example, dictionary() uses the index's value to look up and find the corresponding entry, 
+without having to change the original value of index.
+
+    std:string dictionary.at(int const& index)
+    {   
+        ...
+
+        ++index;   // error
+    }
+
+4. define a const reference to a std::string value parameter
+
+> This is appropriate when the function wants to operate on the actual str::string type object that 
+is passed, but not modify it.
+
+This is illustrated in this example because, length() only computes the length of the passed string, 
+not modify it, so it can use the original string through the const reference.
+
+    size_t length(std::string const& str)
+    {
+        ...
+
+        str += '\n';    // error
+    }
+
+5. define a non-const reference to an int-type parameter
+
+> This is appropriate when the function wants to modify integer data and make the changes visible to the 
+caller. 
+
+In the following example, the function increments the actual parameter count, so the result is reflected 
+back to the count variable.
+
+    int resource_incr(int &resource);
+
+    int count = 1;
+    resource_incr(count);   // count = 2;
+
+
+6. define a non-const reference to a std::string value parameter
+
+> This is appropriate when the function wants to modify the string object passed and make the changes 
+visible outside the function.
+
+In this example, the function rearranges the original passed string in alphabetical order, modifying the 
+original string.
+
+    void sort_str(std::string &str);
+
+    std::string name = "cab";
+    sort_str(name);     // name = "abc";
+
+
+7. define a const rvalue-reference to an int-type parameter
+
+> It is appropriate to use when the function expects its integer parameter to be the immediate output of 
+an expression evaluation but does not want to modify the value.
+
+In this example, function get_user_info() expects its user_id parameter to come from the output of function
+get_user_index() which is an rvalue, but it only uses the value for lookup, not modify it.
+
+    UserInfo get_user_info(int const&& user_id);
+
+    int get_user_index(std::string const& user_name);
+
+    get_user_info(get_user_index(name));
+
+
+8. define a const rvalue-reference to a std::string parameter
+
+> This is appropriate when the function expects its string parameter to come from an expression evaluation, 
+or an NTBS, but not modify it.
+
+In this example, a function gets an email string from the output of get_email_field(), and stores the value 
+to the length function.
+
+    void validation_helper(std::string const &&email)
+    {
+        size_t size = length(email);
+    }
+
+    validation_helper(get_email_field());
+
+
+9. define an rvalue-reference to an int-type parameter
+
+> This is appropriate when the function wants to get an integer parameter from an expression evaluation, 
+and also modify the data.
+
+In this example, function decrypt() takes its input from another function and modifies the data by XOR-ing 
+with a key.
+
+    int decrypt(int &&secret)
+    {
+        secret ^= key;
+        return secret;
+    }
+
+    decrypt(received());
+
+10. define an rvalue-reference to a std::string parameter
+
+> This is appropriate when the function wants to get a string object from an expression evaluation or an 
+NTBS, and modify the string object. 
+
+In this function, parameter first is obtained from the result of getfirstname(), and is modified by concatenating
+it with another string (which is a copy of the original), and then the modified first is returned.
+
+    std::string merge(std::string &&first, std::string back)
+    {
+        first += back;
+        return first;
+    }
+
+    merge(getfirstname(), getlastname());
+
+
+11. return an int-type value
+
+> This is appropriate when the function obtains some integer value and wants to send a copy of it back to the 
+caller.
+
+In this example, caller calls get_score() which returns a copy the appropriate score to the caller which is stored 
+in score.
+
+    int get_score(int id);
+
+    int score = get_score(3);
+
+
+12. return a std::string value
+
+> This is appropriate when the function obtain a string object that it wants to send a copy of it back to the 
+caller.
+
+In this example, function reverse() reverses string "hello" and sends a copy of the reversed string object back 
+to the caller.
+
+    std::string reversed_hello = reverse("hello");
+
+13. return a const reference to an int
+
+> This is appropriate when a function wants to send a direct instance of an integer instead of a copy, back to 
+the caller, and also does not want the caller to tamper with the obtained value.
+
+In this example, the get_token() generates an integer instance of a token, and directly sends this instance to 
+the caller. But the caller cannot modify my_token.
+
+    int const& get_token();
+
+    int my_token = get_token();
+    ++my_token;     // error
+
+
+14. return a const reference to a std::string
+
+> This is appropriate when a function wants to send a string object directly to the caller, instead of a copy, 
+but does not want the user to modify the string.
+
+In this example, the function returns the spell-checked string object but the caller cannot modify new_book.
+
+    std::string const& spell_checker(std::string& book);
+
+    std::string new_book = spell_checker(old_book);
+    new_book += '\n';       // error
+
+15. return a non-const reference to an int
+
+> This is appropriate when a function wants to send the caller the original instance of an integer, also allows 
+the caller to modify the value.
+
+In this example, the function directly gives the caller the random integer instance it generates, the caller can
+then decrement the counter value.
+
+    int& random_count_gen();
+
+    int count = random_count_gen();
+    while (count--);    // okay
+
+16. return a non-const reference to a std::string
+
+> This is appropriate when a function wants to send a string object directly to the caller, and also wants the user
+to be able to modify the string object.
+
+In this example, the function sends a nickname string reference to the caller. The caller can then modify the nickname.
+
+    std::string& generate_nickname();
+
+    std::string my_nickname = generate_nickname();
+    my_nickname += '\n';    // okay
+
+17. return a const rvalue-reference to an int
+
+> This is appropriate when the function wants to send the returning integer instance of another expression evaluation 
+to the caller but does not want it to modify the integer. 
+
+In this example, the function returns the random_gen()'s resultant integer to the caller, but the caller cannot 
+increment the reference.
+
+    int const&& get_constant_token()
+    {
+        return random_gen();
+    }
+
+    int tok = get_constant_token();
+    ++tok;      // error
+
+18. return a const rvalue-reference to a std::string
+
+> This is appropriate when the function wants to send a string object returned by an expression evalutaion directly 
+to the caller but does not want the caller to modify the string.
+
+In this example, the function returns the immediate string output of closest_valid_word() to the caller, but the 
+caller cannot modify the string.
+
+    std::string const&& fix_spellings(std::string &str)
+    {
+        return closest_valid_word(str);
+    }
+
+    std::string fixed_str = fix_spellings("jello");     // "hello"
+    fixed_str += " world";                              // error
+
+
+19. return an rvalue-reference to an int
+
+> This is appropriate when the function wants to send the returning integer instance of another expression evaluation
+to the caller and does not care if caller modifies the integer.
+
+In this example, the function returns random_gen()'s return instance directly to the caller, this time the caller can
+increment the token.
+
+    int&& get_token()
+    {
+        return random_token();
+    }
+
+    int tok = get_token();
+    ++tok;  // valid
+
+20. return an rvalue-reference to a std::string
+
+> This is appropriate when the function wants to send a string object returned by an expression evalutaion directly 
+to the caller but does not care if caller modifies the string.
+
+In this example, the function returns the immediate string returned by closest_valid_words(), and the caller can 
+modify the string.
+
+    std::string&& fix_spellings(std::string &str)
+    {
+        return closest_valid_word(str);
+    }
+
+    std::string fixed_str = fix_spellings("jello");     // "hello"
+    fixed_str += " world";                              // valid
+
+
+
+
