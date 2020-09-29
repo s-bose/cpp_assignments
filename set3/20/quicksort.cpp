@@ -1,58 +1,42 @@
-#include <iostream>
-#include <cstdlib>
+#include <algorithm>
 
-size_t partition(int *arr, size_t left, size_t right)
+#include "quicksort.h"
+#include "utilities.h"
+
+int lcase_compare(std::string str_first, std::string str_second)
 {
-    int pivot_elem = arr[left];
-    size_t pivot = left;
+        // transform both the strings into lowercase
+    std::transform(str_first.begin(), str_first.end(), str_first.begin(), ::tolower);
+    std::transform(str_second.begin(), str_second.end(), str_second.begin(), ::tolower);
 
-    while (left < right)
+        // perform case-insensitive string comparison
+    return str_first.compare(str_second);
+}
+
+
+size_t partition(std::string *arr, size_t left, size_t right)
+{
+    size_t pivot = left;
+    while (left < right)    // iterate from left to right
     {
-        if (arr[left] <= pivot_elem)
+                            // if element comes before pivot, put it before pivot
+        if (lcase_compare(arr[left], arr[pivot]) <= 0)
         {
-            int tmp = arr[pivot];
-            arr[pivot] = arr[left];
-            arr[left] = tmp;
+            std::swap(arr[pivot], arr[left]);
             pivot = left;
             ++left;
         }
-        else
-        {
-            int tmp = arr[--right];
-            arr[right] = arr[left];
-            arr[left] = tmp;
-        }
+        else                // if element comes after pivot, move right forward
+            std::swap(arr[--right], arr[left]);
     }
     return pivot;
 }
 
-void quicksort(int *arr, size_t left, size_t right)
+void quicksort(std::string *arr, size_t left, size_t right)
 {
     if (left >= right)
         return;
     size_t mid = partition(arr, left, right);
     quicksort(arr, left, mid);
     quicksort(arr, mid + 1, right);
-}
-
-int main()
-{
-    int *arr = new int[20];
-    for (int i = 0; i < 20; i++)
-    {
-        arr[i] = rand() % 100 + 1;
-    }
-    for (int i = 0; i < 20; i++)
-    {
-        std::cout << arr[i] << ' ';
-    }
-    std::cout << '\n';
-
-    quicksort(arr, 0, 20);
-
-    for (int i = 0; i < 20; i++)
-    {
-        std::cout << arr[i] << ' ';
-    }
-    std::cout << '\n';
 }
