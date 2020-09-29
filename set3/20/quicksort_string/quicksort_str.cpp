@@ -6,9 +6,9 @@ size_t partition(std::string &str, size_t left, size_t right)
     size_t pivot = left;
     while (left < right)    // iterate from left to right
     {                       // case-insensitive character comparison
-        if (tolower(str[left] <= tolower(str[pivot])))
+        if (::tolower(str[left]) <= ::tolower(str[pivot]))
         {                   // if element comes before pivot, put it before pivot
-            std::swap(str[pivot], str[left]);
+            std::swap(str[left], str[pivot]);
             pivot = left;
             ++left;
         }
