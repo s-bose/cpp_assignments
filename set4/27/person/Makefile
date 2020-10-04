@@ -9,4 +9,4 @@ $(CXX_LIBOBJS): %o : %cc
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
 
 clean:
-	rm -f $(CXX_LIBOBJS)
+	rm -f libperson.a $(CXX_LIBOBJS)

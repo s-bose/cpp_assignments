@@ -12,6 +12,9 @@ class Person
 	std::string d_phone;		// telephone number
 	size_t		d_mass;			// the mass in kg.
 
+
+	size_t const n_member = 4;		// total number of data members
+
 	public:						// member functions
 		inline void setName(std::string const &name)
 		{

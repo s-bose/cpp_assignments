@@ -9,3 +9,5 @@ bool Person::verifyPhone(std::string const &phone)
     }
     return true;
 }
+
+// function to verify whether the passed phone number is valid.
