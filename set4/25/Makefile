@@ -6,7 +6,7 @@ interest_calculator: $(CXX_LIBOBJS)
 	$(CXX) $(CXXFLAGS) -o $@ $^
 
 $(CXX_LIBOBJS): %o : %cc
-	$(CXX) $(CXXFLAGS) -c -o $@ $^
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
 	rm -f interest_calculator $(CXX_LIBOBJS)

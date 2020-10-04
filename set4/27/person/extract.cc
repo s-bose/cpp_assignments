@@ -16,14 +16,11 @@ void Person::extract(std::istream &ip_stream)
     {
         std::getline(str_stream, data_members[index], ',');
     }
-    Person person;
-    person.setName(data_members[0]);
-    person.setAddress(data_members[1]);
-    person.setPhone(data_members[2]);
-    person.setMass(std::stoul(data_members[3]));
-
-    person.insert(std::cout);
     
-    extract(ip_stream);
+    
+    this->setName(data_members[0]);
+    this->setAddress(data_members[1]);
+    this->setPhone(data_members[2]);
+    this->setMass(std::stoul(data_members[3]));
 
 }

@@ -3,4 +3,3 @@ person/person.ih
 person/verify_phone.cc
 person/insert.cc
 person/extract.cc
-main.cc
