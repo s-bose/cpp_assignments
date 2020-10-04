@@ -1,0 +1,47 @@
+1. Describe in your own words what `encapsulation' and `data hiding' means, and why these concepts are 
+important when designing classes.
+
+> `encapsulation` is the idea of wrapping various interrelated methods and the data they work with 
+inside of a class interface declared in a header file.
+
+`Data hiding` means making certain data, i.e member variables or auxiliary methods of a class 
+inaccessible to the end-user using that class.
+
+`encapsulation` is an important design decision when designing classes because it provides a
+way of wrapping together interrelated data to reduce the complexity of the class.
+
+`Data hiding` provides a way to restrict the users of the class from directly accessing certain methods 
+and member variables which are internal to the class, ensuring data integrity and abstraction.
+
+2. Provide a small example of a self-defined class illustrating your explanation.
+
+> 
+class User
+{
+    string password;
+
+    public:
+        User();
+        string const &get_password() const;
+};
+
+In this class interface, a User's password is stored, along with all its related functionalities. 
+There are publicly accessible methods like the get_password method. This is an example of encapsulation 
+because different data items are wrapped together inside the class.
+
+The fact that password is inside private access specifier is an example of data hiding. Any outside 
+user can otherwise directly access another user's personal password. Thus, data hiding prevents outside
+interference to the data items.
+
+3. The example only requires you to submit a class interface, not a class implementation. Why is the 
+implementation irrelevant?
+
+> The implementation is irrelevant because that is the entire point of encapsulation. The class interface
+in the class header file provides all the necessary details about which data the end-users can and cannot
+use. How they are implemented is a matter internal to the class and the developer of the class. The user
+does not need to be aware of that.
+
+
+
+
+
